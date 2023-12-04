@@ -3,8 +3,8 @@ CREATE TABLE constraints_config (
  rule_id INT NOT NULL,
  constraint_value INT NOT NULL,
  constraint_description VARCHAR(200) NOT NULL,
- start_time TIMESTAMP(10) NOT NULL,
- end_time TIMESTAMP(10) NOT NULL
+ start_time TIMESTAMP(6) NOT NULL,
+ end_time TIMESTAMP(6) NOT NULL
 );
 
 ALTER TABLE constraints_config ADD CONSTRAINT PK_constraints_config PRIMARY KEY (constraints_config_id);
@@ -43,7 +43,7 @@ CREATE TABLE price_schema (
  skill_level skill NOT NULL,
  discount FLOAT(50) NOT NULL,
  instructor_payment INT NOT NULL,
- initial_time TIMESTAMP(10) NOT NULL
+ initial_time TIMESTAMP(6) NOT NULL
 );
 
 ALTER TABLE price_schema ADD CONSTRAINT PK_price_schema PRIMARY KEY (price_schema_id);
@@ -86,7 +86,7 @@ ALTER TABLE instructor ADD CONSTRAINT PK_instructor PRIMARY KEY (instructor_id);
 
 CREATE TABLE instructor_availability (
  instructor_id INT NOT NULL,
- date TIMESTAMP(100) NOT NULL,
+ date TIMESTAMP(6) NOT NULL,
  duration VARCHAR(100) NOT NULL
 );
 
@@ -96,8 +96,8 @@ ALTER TABLE instructor_availability ADD CONSTRAINT PK_instructor_availability PR
 CREATE TABLE lesson (
  lesson_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
  instructor_id INT NOT NULL,
- start_time TIMESTAMP(100) NOT NULL,
- end_time TIMESTAMP(100) NOT NULL,
+ start_time TIMESTAMP(6) NOT NULL,
+ end_time TIMESTAMP(6) NOT NULL,
  place VARCHAR(100) NOT NULL,
  price_schema_id INT NOT NULL
 );
@@ -171,8 +171,8 @@ ALTER TABLE instruments ADD CONSTRAINT PK_instruments PRIMARY KEY (instrument_id
 
 CREATE TABLE rented_instrument (
  rented_instrument_id INT GENERATED ALWAYS AS IDENTITY NOT NULL,
- rental_start_time TIMESTAMP(12) NOT NULL,
- rental_end_time TIMESTAMP(12),
+ rental_start_time TIMESTAMP(6) NOT NULL,
+ rental_end_time TIMESTAMP(6),
  instrument_id INT NOT NULL,
  student_id INT NOT NULL,
  instrument_type_id INT,
